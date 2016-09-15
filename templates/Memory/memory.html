@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Juego de Memoria</title>
+    <script src="/static/js/GLOBAL/jquery-2.2.3.min.js"></script>
+    <link rel="stylesheet" href="/static/Memory/style.css">
+    <meta content="" charset="utf-8">
+    <style></style>
+  </head>
+  <body background-img="octocat.png">
+    <h1>Mi juego</h1>
+    <div style="background: url(Octocat.png); width:100px; heigth:100px; display:inline-block;"></div>
+    <div id="memory"></div>
+    <script src="util.js"></script>
+    <script src="cronometro.js"></script>
+    <script src="memory.js"></script>
+    <script>
+      var v = Array(3);
+      v[0] = "Octocat.png";
+      v[1] = "logo-la-buga.png";
+      v[2] = "tour-cayac.jpg";
+      var v2 = ['uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve','diez',
+                'once','doce','a','b','c','d','e','f','g','h','i','j','k','l'];
+      //juego normal usando texto
+      crearNuevoJuego("memory", v2);
+      
+      //juego usando imágenes, no es posible elegir la dificultad cuando se le manda el número de 
+      //cartas explícitamente (6)
+      //crearNuevoJuego("memory", v, "", null, 6);
+    </script>
+    </body>
+</html>

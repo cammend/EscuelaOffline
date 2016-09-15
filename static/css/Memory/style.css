@@ -1,0 +1,103 @@
+*{
+  font-family: sans-serif;
+}
+
+#memory{
+  margin: 0 auto;
+}
+
+#mem001{
+  border: 1px solid blue;
+  box-sizing: border-box;
+  height: 100%;
+  margin: 0 auto;
+  padding-left: 6px;
+  padding-top: 8px;
+  width: 820px;
+}
+#control{
+  background-color: aqua;
+  border: 1px solid blue;
+  border-bottom: none;
+  box-sizing: border-box;
+  height: 60px;
+  margin: 0 auto;
+  width: 820px;
+}
+
+.mTarjeta{
+  background-color: silver;
+  border: 1px solid blue;
+  border-radius: 5px;
+  display: inline-block;
+  height: 80px;
+  margin-left: 6px;
+  margin-bottom: 6px;
+  width: 92px;
+}
+#msg p{
+  display: block;
+  margin: 0 auto;
+}
+.error{
+  border: 1px solid red;
+  box-shadow: 5px 5px 5px #f00;
+  transition: all 1s;
+}
+#time{
+  box-sizing: border-box;
+  float: left;
+  height: 100%;
+  padding-left: 15px;
+  padding-top: 20px;
+  width: 100px;
+}
+.data{
+  box-sizing: border-box;
+  float: left;
+  height: 100%;
+  padding-left: 10px;
+  width: 618px;
+}
+.data div{
+  background-color: aqua;
+  display: inline-flex;
+  margin-right: 20px;
+}
+.data div p{
+  margin-right: 10px;
+  margin-top: 20px;
+}
+.data div select{
+  margin-top: 5px;
+}
+#iderr{
+  margin-top: 20px;
+}
+#nuevo{
+  float: right;
+  height: 100%;
+  width: 100px;
+}
+#nuevo button{
+  height: 100%;
+}
+.datos{
+  display: inline-block;
+}
+#msg{
+  box-sizing: border-box;
+  font-size: 24px;
+  padding-top: 10px;
+  text-align: center;
+}
+.pString{
+  float: left;
+  margin-left: 3px;
+  margin-top: 20px;
+}
+.iString{
+  float: left;
+  height: 100%;
+  width: 100%;
+}
