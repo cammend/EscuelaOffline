@@ -1,0 +1,5 @@
+/apps/*/__pycache__
+/*/__pycache__
+*.sqlite3
+*.pyc
+000*.py
