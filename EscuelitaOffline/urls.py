@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from Core.views import Index, Memory
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^index/', Index.as_view()),
+    url(r'^juegos/logica/memoria/', Memory.as_view()),
 ]
