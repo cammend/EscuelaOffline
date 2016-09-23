@@ -1,0 +1,81 @@
+{%extends 'base.html'%}
+
+{%block encabezado%}
+	<style type="text/css">
+		html{
+			height: 100%;
+		}
+		body{
+			background-image: url('/static/img/ecuaciones.jpg');
+			height: 100%;
+		}
+		#sectionPrincipal{
+			width: 100%;
+			padding: 100px 50px;
+			height: 100%;
+			box-sizing: border-box;
+		}
+		h1{
+			margin: 0 auto;
+			text-align: center;
+			font-size: 48px;
+			color: white;
+		}
+		form{
+			width: 400px;
+			margin: 0 auto;
+			margin-top: 20px;
+			padding-bottom: 20px;
+			padding-top: 20px;
+			border: 1px solid skyblue;
+			text-align: center;
+			background: rgba(100,100,200,0.2);
+		}
+		form input{
+			background: rgba(255,255,255,0.3);
+			color: #115;
+			padding: 5px;
+			border-radius: 5px;
+			margin: 0 auto;
+			margin-bottom: 20px;
+			width: 90%;
+			font-size: 20px;
+		}
+		form label{
+			color: white;
+			font-size: 20px;
+		}
+		h2{
+			color: white;
+			font-weight: bold;
+			margin: 0 auto;
+			text-align: center;
+		}
+		.errorlist{
+			list-style: outside none none;
+			color: rgb(170, 51, 51);
+			background: white none repeat scroll 0% 0%;
+			margin: 0px 10px 10px;
+			padding: 5px;
+		}
+		.registrar{
+			color: white;
+			text-align: center;
+			width: 100%;
+			padding-top: 5px;
+		}
+	</style>
+{%endblock%}
+
+{%block body%}
+
+<section id="sectionPrincipal">
+	<h1>Aprende Jugando</h1>
+	<h2>Inicio de sesión</h2>
+	<form method="post">{%csrf_token%}
+		{{form.as_p}}
+		<input type="submit" name="Ingresar" value="Ingresar">
+	</form>
+	<p class="registrar"><a class="registrar" href="/crear/">Registrarse</a></p>
+</section>
+{%endblock%}

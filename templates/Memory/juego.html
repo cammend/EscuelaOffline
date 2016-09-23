@@ -1,0 +1,77 @@
+{%extends 'index.html'%}
+
+{%block body%}
+<script type="text/javascript" src="/static/js/GLOBAL/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="/static/js/GLOBAL/util.js"></script>
+<script type="text/javascript" src="/static/js/Memory/memory.js"></script>
+<link rel="stylesheet" href="/static/css/Memory/style.css">
+<style type="text/css">
+#juego{
+  padding-top: 70px;
+}
+h2{
+  padding: 10px;
+}
+footer{
+  display: none;
+}
+#principal{
+  display: table;
+  width: 100%;
+}
+.celda{
+  display: table-cell;
+  text-align: center;
+  padding: 0 10px;
+}
+#instrucciones{
+  color: white;
+  padding-left: 10px;
+  width: 250px;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+#instrucciones p{
+  border-bottom: 1px solid white;
+  margin-top: 5px;
+}
+#puntuacion p{
+  border-bottom: 1px solid white;
+  margin-top: 5px;
+}
+#puntuacion{
+  color: white;
+  padding-right: 10px;
+  width: 250px;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+</style>
+
+<section id="juego">
+  <h2>Juego de Memoria</h2>
+  <select id="nivel">
+    {%for n in niveles%}
+    <option value="{{n.id}}">{{n.nivel}}</option>
+    {%endfor%}
+  </select>
+  <select id="tipo">
+    {%for t in tipo%}
+    <option value="{{t.id}}">{{t.tipo}}</option>
+    {%endfor%}
+  </select>
+  <div id="principal">
+    <div id="instrucciones" class="celda">
+      <p><strong>Instrucciones</strong></p>
+      <p>{{juego.instrucciones}}</p>
+    </div>
+    
+    {%block juego%}{%endblock%}
+
+    <div id="puntuacion" class="celda">
+      <p><strong>Puntuaciones</strong></p>
+  </div>
+  
+</section>
+
+{%endblock%}

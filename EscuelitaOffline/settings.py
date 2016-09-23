@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'Core',
+    'GestionUser'
 ]
 
 MIDDLEWARE = [
@@ -121,3 +123,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'static'),
 )
+
+# URLS de Cuentas de usuario
+LOGIN_URL = '/entrar/'
+LOGOUT_URL = '/salir/'
+LOGIN_REDIRECT_URL = '/index/'
+
+# usuarios personalizados
+AUTH_USER_MODEL = 'GestionUser.Usuario'

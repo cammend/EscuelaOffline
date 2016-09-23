@@ -130,7 +130,7 @@ function reiniciarJuego(){
 //obtener el noTarjetas por nivel de dificultad
 function getNoTarjetas(){
   if(not != null) return not;
-  var dific = $("#dif").val();
+  var dific = $("#nivel").val();
   if( dific == "1" )
     return 16;
   else if( dific == "2" )
@@ -140,7 +140,7 @@ function getNoTarjetas(){
 }
 //obtener si es dinamico por la lista desplegable
 function setearModo(){
-  var modo = $("#mode").val();
+  var modo = $("#tipo").val();
   if( modo == "1" )
     dinamico = false;
   else
@@ -166,16 +166,20 @@ function sumarErrores(){
   crono.intervalo = 30; //para hacer q pase rápido el tiempo
   crono.iniciar(); //lo iniciamos para q muestre el tiempo
   $tiempo.css("background","skyblue");
+  //detiene la sumatoria del tiempo por errores
   window.setTimeout(function(){
     crono.detener(); //lo detenemos
     crono.kill(); //lo destruimos
   },memory.err*200);
+  //envia un formulario para guardar los datos del juego
+  punteo = $tiempo.text();
+  guardarPunteo(memory.err*250, punteo, "nivel", "tipo");
 }
 //se llama esta función cuando se gana el juego
 function hasGanado(){
   crono.detener();
   window.setTimeout(function(){
-    alert("Has ganado");
+    alert("Has Terminado");
     sumarErrores();
   },2000);
 }
@@ -286,16 +290,13 @@ function Inicializar(idMemory){
   $data = $("#data");
   $nuevo = $("#nuevo");
   $nuevo.append("<button onclick='newGame();'>Nuevo Juego</button>");
-  $data.append("<div class='datos'><p>Dificultad:</p><select id='dif'></select></div>");
+  $data.append("<div id='dif' class='datos'><p>Dificultad:</p></div>");
   var diff = $("#dif");
-  diff.append("<option value='1'>Fácil</option>");
-  diff.append("<option value='2'>Moderado</option>");
-  diff.append("<option value='3'>Difícil</option>");
-  $data.append("<div class='datos'><p>Modo:</p><select id='mode'></select></div>");
+  $("#nivel").appendTo(diff);
+  $data.append("<div id='mode' class='datos'><p>Modo:</p></div>");
   $data.append("<div class='datos'><p>No Errores:</p><div id='iderr'>0</div></div>");
   var mode = $("#mode");
-  mode.append("<option value='1'>Estático</option>");
-  mode.append("<option value='2'>Dinámico</option>");
+  $("#tipo").appendTo(mode);
   $tablero = $("#mem001");
   $opciones = $data;
   $tiempo = $time;

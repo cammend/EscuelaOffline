@@ -1,11 +1,147 @@
 {%extends 'base.html'%}
 
-{%block body%}
-<h1>Escuelita Offline</h1>
+{%block encabezado%}
+	<style type="text/css">
+		html{
+			height: 100%;
+		}
+		body{
+			background-image: url('/static/img/ecuaciones.jpg');
+			height: 100%;
+		}
+		#sectionPrincipal{
+			width: 100%;
+			padding: 100px 50px;
+			height: 100%;
+			box-sizing: border-box;
+		}
+		#sectionPrincipal h1{
+			margin: 0 auto;
+			text-align: center;
+			font-size: 48px;
+			color: white;
+		}
+		#sectionPrincipal form{
+			width: 300px;
+			margin: 0 auto;
+			margin-top: 20px;
+			padding-bottom: 20px;
+			padding-top: 20px;
+			border: 1px solid skyblue;
+			text-align: center;
+			background: rgba(100,100,200,0.2);
+		}
+		#sectionPrincipal form input{
+			background: rgba(255,255,255,0.3);
+			color: #115;
+			padding: 5px;
+			border-radius: 5px;
+			margin: 0 auto;
+			margin-top: 20px;
+			width: 80%;
+			font-size: 20px;
+		}
+		.categoria{
+			display: table-cell;
+			text-align: center;
+		}
+		.categoria a{
+			text-decoration: none;
+			margin: 0 auto;
+			display: inline-block;
+		}
+		.categoria p{
+			color: white;
+			font-size: 20px;
+			padding: 20px;
+			text-align: center;
+			font-weight: bold;
+		}
+		.categoria a img{
+			border-radius: 50%;
+			width: 150px;
+			height: 150px;
+			margin: 0 auto;
+			display: block;
+			border: 0px;
+		}.categoria a img:hover{
+			box-shadow: 0px 0px 15px #000 inset;
+			border: 5px solid rgba(255,100,255,0.5);
+			box-sizing: border-box;
+			transition: 0.1s all; 
+		}
+		form label{
+			color: white;
+			font-size: 20px;
+		}
+		#ulCateg{
+			display: table;
+			width: 100%;
+			padding-top: 50px;
+			margin: 0 auto;
+		}
+		h2{
+			color: white;
+			font-weight: bold;
+			margin: 0 auto;
+			text-align: center;
+		}
+		#nextpage{
+			text-align: right;
+		}
+		#prevpage{
+			text-align: left;
+		}
+		#nextpage a{
+			font-size: 40px;
+			font-weight: bold;
+			text-decoration: none;
+			padding: 15px;
+			border-radius: 50%;
+		}
+		#prevpage a{
+			font-size: 40px;
+			font-weight: bold;
+			text-decoration: none;
+			padding: 15px;
+			border-radius: 50%;
+		}
+		.deshab{
+			color: #444;
+			background-color: rgba(255,255,255,.4);
+		}
+		.hab{
+			color: #222;
+			background-color: rgba(255,255,255,.8);
+		}
+	</style>
+{%endblock%}
 
-<ul>
-  <li>Juegos de Matemáticas</li>
-  <li>Juegos de Lógica</li>
-  <li>Juegos de Idioma Inglés</li>
+{%block body%}
+
+<section id="sectionPrincipal">
+	<h1>Aprende Jugando</h1>
+	<h2>Categorías</h2>
+
+
+<ul id="ulCateg">
+	{%if page_obj.has_previous%}
+	<li id="prevpage" class="categoria"><a class="hab" href="?page={{page_obj.previous_page_number}}">«</a></li>
+	{%else%}
+	<li id="prevpage" class="categoria"><a class="deshab" href="#">«</a></li>
+	{%endif%}
+
+		{%for c in categoria%}
+	  	<li class="categoria"><a href="/juegos/{{c.id}}/categoria/"><img src="/static/img/{{c.icono}}" /></a><p>{{c}}</p></li>
+	 	{%endfor%}
+
+ 	{%if page_obj.has_next%}
+	<li id="nextpage" class="categoria"><a class="hab" href="?page={{page_obj.next_page_number}}">»</a></li>
+	{%else%}
+	<li id="nextpage" class="categoria"><a class="deshab" href="#">»</a></li>
+	{%endif%}
 </ul>
+
+
+</section>
 {%endblock%}

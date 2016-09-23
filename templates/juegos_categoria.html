@@ -1,0 +1,30 @@
+{%extends 'index.html'%}
+
+{%block titulo%}{{categoria}}{%endblock%}
+
+{%block body%}
+<section id="sectionPrincipal">
+	<h1>Aprende Jugando</h1>
+	<h2>Juegos de {{categoria}}</h2>
+
+<ul id="ulCateg">
+	{%if page_obj.has_previous%}
+	<li id="prevpage" class="categoria"><a class="hab" href="?page={{page_obj.previous_page_number}}">«</a></li>
+	{%else%}
+	<li id="prevpage" class="categoria"><a class="deshab" href="#">«</a></li>
+	{%endif%}
+
+	  {%for j in juegos%}
+	    <li class="categoria"><a href="/juegos/{{j.id}}/"><img src="/static/img/{{j.icono}}" /></a><p>{{j}}</p></li>
+	  {%endfor%}
+
+	{%if page_obj.has_next%}
+	<li id="nextpage" class="categoria"><a class="hab" href="?page={{page_obj.next_page_number}}">»</a></li>
+	{%else%}
+	<li id="nextpage" class="categoria"><a class="deshab" href="#">»</a></li>
+	{%endif%}
+</ul>
+
+</section>
+
+{%endblock%}

@@ -1,0 +1,132 @@
+{%extends 'index.html'%}
+
+{%block body%}
+<style type="text/css">
+#juego{
+  padding-top: 70px;
+}
+h2{
+  padding: 10px;
+}
+footer{
+  display: none;
+}
+#principal{
+  display: table;
+  width: 100%;
+}
+.celda{
+  display: table-cell;
+  text-align: center;
+  padding: 0 10px;
+}
+#instrucciones{
+  color: white;
+  padding-left: 10px;
+  width: 350px;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+#instrucciones p{
+  border-bottom: 1px solid white;
+  margin-top: 5px;
+}
+#puntuacion p{
+  border-bottom: 1px solid white;
+  margin-top: 5px;
+}
+#puntuacion{
+  color: white;
+  padding-right: 10px;
+  width: 350px;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+table{
+  border-collapse: collapse;
+}
+th,td{
+  border: 1px solid #888;
+  padding: 5px;
+  text-align: left;
+  vertical-align: top;
+}
+thead{
+  background-color: #363655;
+  color: white;
+}
+thead tr th{
+  text-align: center;
+}
+tbody tr:nth-child(2n){
+  background-color: rgba(255,255,255,0.3);
+}
+tbody tr td:last-child(){
+  text-align: right;
+}
+.numero{
+  text-align: right;
+}
+
+</style>
+
+<section id="juego">
+  <h2>{{juego.nombre}}</h2>
+  <select id="nivel">
+    {%for n in niveles%}
+    <option value="{{n.nivel.codigo}}">{{n.nivel}}</option>
+    {%endfor%}
+  </select>
+  {%if juego_tipo%}
+  <select id="tipo">
+    {%for t in tipo%}
+    <option value="{{t.tipo.codigo}}">{{t.tipo}}</option>
+    {%endfor%}
+  </select>
+  {%endif%}
+
+  <form id="punteojuego" method="post" action="/guardar_punteo/" style="display: none;">
+    {%csrf_token%}
+    <input type="text" name="idjuego" value="{{juego.id}}">
+    <input type="text" name="urlback" value="{{request.path}}">
+  </form>
+
+  <div id="principal">
+    <div id="instrucciones" class="celda">
+      <p><strong>Instrucciones</strong></p>
+      <p>{{juego.instrucciones}}</p>
+    </div>
+    
+    {%block juego%}{%endblock%}
+
+    <div id="puntuacion" class="celda">
+      <p><strong>Puntuaciones</strong></p>
+
+      <table>
+        <thead>
+        <tr>
+          <td class="campo">Nivel</td>
+          {%if juego_tipo%}
+          <td class="campo">Tipo</td>
+          {%endif%}
+          <td class="campo">{{des_punteo}} Min</td>
+          <td class="campo">{{des_punteo}} Max</td>
+        </tr>
+        </thead>
+        {%for p in punteos%}
+        <tr>
+          <td class="campo">{{p.cod_nivel}}</td>
+          {%if juego_tipo%}
+          <td class="campo">{{p.cod_tipo}}</td>
+          {%endif%}
+          <td class="campo numero">{{p.punteoMin}}</td>
+          <td class="campo numero">{{p.punteoMax}}</td>
+        </tr>
+        {%endfor%}
+      </table>
+    </div>
+  </div>
+  
+</section>
+
+{%endblock%}

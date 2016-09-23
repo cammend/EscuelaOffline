@@ -1,0 +1,18 @@
+{%extends 'juego.html'%}
+
+{%block juego%}
+  <div id="memory"></div>
+<script type="text/javascript" src="/static/js/GLOBAL/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="/static/js/GLOBAL/util.js"></script>
+<script type="text/javascript" src="/static/js/Memory/memory.js"></script>
+<link rel="stylesheet" href="/static/css/Memory/style.css">
+  <script>
+    var v2 = ['apple.png','book.png','box.png','bright.png','chair.png','city.png','door.png','face.png','feet.png','find.png','food.png','foot.png','hand.png','house.png','learn.png','leg.png','look.png','man.png','meat.png','mirror.png','pen.png','pencil.png','people.png','phone.png','read.png','run.png','search.png','speak.png','table.png','tooth.png','village.png','walk.png','wall.png','woman.png','write.png'];
+    //juego normal usando texto
+    crearNuevoJuego("memory", v2, "/static/img/Memory/");
+    
+    //juego usando imágenes, no es posible elegir la dificultad cuando se le manda el número de 
+    //cartas explícitamente (6)
+    //crearNuevoJuego("memory", v, "", null, 6);
+  </script>
+{%endblock%}

@@ -15,10 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from Core.views import Index, Memory
+from Core.views import *
+from django.contrib.auth import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index/', Index.as_view()),
-    url(r'^juegos/logica/memoria/', Memory.as_view()),
+    url(r'^juegos/(?P<slug>[-\w]+)/$', BaseJuego.as_view()),
+    url(r'^juegos/(?P<slug>[-\w]+)/categoria/$', CategoriaDeJuegos.as_view()),
+    url(r'^entrar/$', views.login, {'template_name': 'login.html'} ),
+    url(r'^salir/$', views.logout, {'next_page': '/entrar/'} ),
+    url(r'^crear/$', NuevoUsuario.as_view() ),
+    url(r'^guardar_punteo/$', guardarPunteo ),
 ]

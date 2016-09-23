@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{%block titulo%}{%endblock%}</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<style type="text/css">
+		html{
+			height: 100%;
+		}
+		body{
+			background: url('/static/img/matematicas.jpg');
+			background-size: 100%;
+			height: 100%;
+		}
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#barraSuperior{
+			height: 60px;
+			border-top: 1px solid skyblue;
+			border-bottom: 1px solid skyblue;
+			width: 100%;
+			margin-bottom: 30px;
+		}
+		#navPrincipal{
+			width: 70%;
+			height: 60px;
+			float: right;
+			text-align: right;
+			vertical-align: middle;
+			color: white;
+		}
+		#navPrincipal ul{
+			display: table;
+			float: right;
+			margin: 10px 0;
+		}
+		#navPrincipal ul li{
+			display: table-cell;
+			padding: 10px;
+		}
+		#logo{
+			width: 30%;
+			height: 60px;
+			float: left;
+			padding: 10px;
+			box-sizing: border-box;
+			color: white;
+			vertical-align: middle;
+		}
+		#logo h3 a{
+			text-decoration: none;
+			color: white;
+		}
+		#logo h3{
+			padding: 8px 0;
+		}
+		#cuerpo{
+			background: rgba(20,20,20,.8);
+			{%if user.is_authenticated%}
+			height: 100%;
+			{%endif%}
+		}
+		footer{
+			border-bottom: 1px solid #333;
+			border-top: 1px solid #333;
+			box-sizing: border-box;
+			box-shadow: 0px 0px 5px #aaa inset;
+			color: white;
+			height: 100px;
+			padding: 30px;
+			text-align: center;
+			margin-top: 30px;
+		}
+		h2{
+			color: white;
+			padding-bottom: 10px;
+			text-align: center;
+		}
+	</style>
+	{%block encabezado%}{%endblock%}
+</head>
+<body>
+<div id="cuerpo">
+<header id="barraSuperior">
+	<div id="logo">
+		<h3><a href="/index/">Escuelita Offline</a></h3>
+	</div>
+	<nav id="navPrincipal">
+		<ul>
+			<li>Puntuaciones</li>
+			<li>Categorías</li>
+			{%if user.is_authenticated%}
+			<li>Hola {{user.username}}</li>
+			{%endif%}
+		</ul>
+	</nav>
+</header>
+{%block body%}{%endblock%}
+
+</div>
+</body>
+</html>

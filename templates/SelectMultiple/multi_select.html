@@ -1,0 +1,85 @@
+{%extends 'juego.html'%}
+
+{%block juego%}
+<script type="text/javascript" src="/static/js/GLOBAL/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="/static/js/GLOBAL/processing.min.js"></script>
+<script type="text/javascript" src="/static/js/GLOBAL/util.js"></script>
+<script type="text/javascript" src="/static/js/GLOBAL/MathOper.js"></script>
+  <script>
+    var jugando = false;
+
+    function iniciarJuego(){
+      if( jugando )
+        jugando = false;
+      else
+        jugando = true;
+    }
+  </script>
+  <style type="text/css">
+    #encabezado{
+      width: 602px;
+      border-top: 1px solid black;
+      border-left: 1px solid black;
+      border-right: 1px solid black;
+      display: inline-block;
+      background-color: #88a;
+      box-sizing: border-box;
+      padding: 10px;
+      display: table;
+      margin: 0 auto;
+    }
+    .encabs{
+      display: table-cell;
+      box-sizing: border-box;
+      height: 30px;
+      border-left: 1px solid white;
+    }
+    .parraf{
+      margin: 5px;
+      display: inline-block;
+    }
+    #juegomultiselect{
+      display: block;
+    }
+    #time{
+      border: none;
+    }
+    canvas{
+      border: 1px solid black;
+      image-rendering: -moz-crisp-edges ! important;
+    }
+    select{
+      width: 100px;
+      display: inline-block;
+    }
+    #boton{
+      text-align: right;
+    }
+  </style>
+
+  <div id="multiple" class="celda">
+    <div id="encabezado">
+      <div id="time" class="encabs">
+        <p id="tiempo" class="parraf">00:00:00</p>
+      </div>
+      <div id="dif" class="encabs">
+        <p class="parraf">Dificultad: </p>
+      </div>
+      <div class="encabs">
+        <p id="errores" class="parraf">Errores: </p>
+      </div><div class="encabs">
+        <p id="numero" class="parraf">No: </p>
+      </div>
+      <div id="boton" class="encabs">
+        <button id="nuevo" onclick='iniciarJuego()'>Nuevo</button>
+      </div>
+    </div>
+    <div id="juegomultiselect">
+    <canvas id="canvasjuego" data-processing-sources="/static/js/SelectMultiple/multiSelect.js">
+    </canvas></div>
+   </div>
+   <script>
+     var diff = $("#dif");
+     $("#nivel").appendTo(diff);
+   </script>
+{%endblock%}

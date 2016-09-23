@@ -151,3 +151,19 @@ function setDisplay(){
 function setDisplay2(){
   display.textContent = reloj.getVal2();
 }
+
+
+//función para enviar el punteo a la url que lo guarda en la db
+function guardarPunteo(retardo, punteo, selectNivel, selectTipo){
+  window.setTimeout(function(){
+    tipo  = $("#"+selectTipo).val();
+    if(!tipo)
+      tipo = "";
+    nivel = $("#"+selectNivel).val();
+    $form = $("#punteojuego");
+    $form.append("<input name='punteo' value='"+punteo+"'/>");
+    $form.append("<input name='idnivel' value='"+nivel+"'/>");
+    $form.append("<input name='idtipo' value='"+tipo+"'/>");
+    $form.submit();
+  },retardo);
+}
